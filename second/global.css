@@ -1,0 +1,28 @@
+body {
+  background-color: whitesmoke;
+}
+
+.board {
+  width: 100%;
+  overflow-x: auto;
+  height: 70vh;
+}
+
+.board__column {
+  width: 17rem;
+  min-width: 17rem;
+  min-height: 30rem;
+  overflow-y: auto;
+}
+
+.board__card {
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
