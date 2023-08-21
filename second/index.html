@@ -26,7 +26,7 @@
 
         function getCardHTML({ idGen, nameValue, descriptionValue }) {
           return `
-          <div id="card-${idGen}" class="card board__card" onClick="javascript: loadCard(${idGen});">
+          <div id="card-${idGen}" ondragstart="drag(event)" draggable="true" class="card board__card" onClick="javascript: loadCard(${idGen});">
             <div class="card-body">
               <h5 class="card-title" id="card-${idGen}-title">
                 ${nameValue}
@@ -90,8 +90,32 @@
           clearValues();
         });
 
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+
+        function drop(ev, element) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          const card = document.getElementById(data);
+          element.appendChild(document.getElementById(data));
+        }
+
         window.addCard = addCard;
         window.loadCard = loadCard;
+        window.allowDrop = allowDrop;
+        window.drag = drag;
+        window.drop = drop;
       });
     </script>
   </head>
@@ -181,19 +205,44 @@
         </button>
       </div>
       <div class="list-group d-flex flex-sm-row flex-column gap-2 board">
-        <div id="backlog-column" class="card p-4 board__column">
+        <div
+          id="backlog-column"
+          class="card p-4 board__column"
+          ondragover="allowDrop(event)"
+          ondrop="drop(event, this)"
+        >
           <h5 class="card-title">Backlog</h5>
         </div>
-        <div id="in-progress-column" class="card p-4 board__column">
+        <div
+          id="in-progress-column"
+          class="card p-4 board__column"
+          ondragover="allowDrop(event)"
+          ondrop="drop(event, this)"
+        >
           <h5 class="card-title">In Progress</h5>
         </div>
-        <div id="testing-column" class="card p-4 board__column">
+        <div
+          id="testing-column"
+          class="card p-4 board__column"
+          ondragover="allowDrop(event)"
+          ondrop="drop(event, this)"
+        >
           <h5 class="card-title">Testing</h5>
         </div>
-        <div id="done-column" class="card p-4 board__column">
+        <div
+          id="done-column"
+          class="card p-4 board__column"
+          ondragover="allowDrop(event)"
+          ondrop="drop(event, this)"
+        >
           <h5 class="card-title">Done</h5>
         </div>
-        <div id="blocked-column" class="card p-4 board__column">
+        <div
+          id="blocked-column"
+          class="card p-4 board__column"
+          ondragover="allowDrop(event)"
+          ondrop="drop(event, this)"
+        >
           <h5 class="card-title">Blocked</h5>
         </div>
       </div>
