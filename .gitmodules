@@ -1,0 +1,3 @@
+[submodule "tour-of-heroes"]
+	path = tour-of-heroes
+	url = https://github.com/pablohaller/portfolio-web-y-mobile/
