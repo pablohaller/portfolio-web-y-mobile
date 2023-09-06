@@ -1,7 +1,21 @@
-<h1>{{ title }}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>&nbsp;&nbsp;&nbsp;
-  <a routerLink="/heroes">Heroes</a>
-</nav>
-<router-outlet></router-outlet>
+<div class="text-center">
+  <h1 class="text-6xl text-yellow-500">{{ title }}</h1>
+  <nav class="py-10 text-3xl flex gap-6 justify-center font-light">
+    <a
+      class="decoration-2 hover:decoration-wavy transition ease-in delay-75 underline hover:text-yellow-500 underline-offset-8"
+      routerLink="/dashboard"
+    >
+      Dashboard
+    </a>
+    <a
+      class="decoration-2 hover:decoration-wavy transition ease-in delay-75 underline hover:text-yellow-500 underline-offset-8"
+      routerLink="/heroes"
+    >
+      Heroes
+    </a>
+  </nav>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
 <app-messages></app-messages>

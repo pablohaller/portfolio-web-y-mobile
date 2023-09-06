@@ -1,8 +1,16 @@
-<h2>Top Heroes</h2>
-<div class="heroes-menu">
-  <a *ngFor="let hero of heroes" routerLink="/detail/{{ hero.id }}">
-    {{ hero.name }}
+<app-hero-search></app-hero-search>
+<h2 class="text-center text-yellow-500 font-thin text-xl my-10">Top Heroes</h2>
+<div
+  class="grid grid-cols-2 md:grid-cols-4 gap-5 w-full justify-center h-[26rem]"
+>
+  <a
+    class="transition-all ease-in-out border-4 border-gray-200 bg-gray-400 bg-cover rounded-xl md:hover:h-96 h-80 flex flex-col-reverse bg-[url('https://upload.wikimedia.org/wikipedia/commons/c/cd/Placeholder_male_superhero_c.png')] hover:shadow-lg hover:shadow-yellow-500/50 hover:border-yellow-500"
+    *ngFor="let hero of heroes"
+    routerLink="/detail/{{ hero.id }}"
+  >
+    <span
+      class="truncate md:font-thin text-center text-2xl md:text-6xl text-yellow-500 mb-4 p-2"
+      >{{ hero.name }}</span
+    >
   </a>
 </div>
-
-<app-hero-search></app-hero-search>
